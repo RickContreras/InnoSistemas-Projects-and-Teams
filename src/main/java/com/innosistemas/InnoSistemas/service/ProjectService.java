@@ -13,10 +13,10 @@ import java.util.Optional;
 @Service
 public class ProjectService {
 
-    @Autowired
     private final ProjectRepository projectRepository;
 
     // Inyección por constructor (mejor práctica)
+    @Autowired
     public ProjectService(ProjectRepository projectRepository) {
         this.projectRepository = projectRepository;
     }
