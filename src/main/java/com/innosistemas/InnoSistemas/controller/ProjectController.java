@@ -3,19 +3,17 @@ package com.innosistemas.InnoSistemas.controller;
 import com.innosistemas.InnoSistemas.domain.Project;
 import com.innosistemas.InnoSistemas.service.ProjectService;
 import org.springframework.web.bind.annotation.*;
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/projects")
+@RequiredArgsConstructor
 public class ProjectController {
 
     private final ProjectService projectService;
-
-    public ProjectController(ProjectService projectService) {
-        this.projectService = projectService;
-    }
 
     @GetMapping
     public List<Project> getAll() {

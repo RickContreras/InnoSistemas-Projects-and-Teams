@@ -3,19 +3,17 @@ package com.innosistemas.InnoSistemas.controller;
 import com.innosistemas.InnoSistemas.domain.Team;
 import com.innosistemas.InnoSistemas.service.TeamService;
 import org.springframework.web.bind.annotation.*;
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/teams")
+@RequiredArgsConstructor
 public class TeamController {
 
     private final TeamService teamService;
-
-    public TeamController(TeamService teamService) {
-        this.teamService = teamService;
-    }
 
     @PostMapping
     public Team create(@RequestBody Team team) {
