@@ -3,6 +3,8 @@ package com.innosistemas.InnoSistemas.config;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.servers.Server;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,6 +14,8 @@ import java.util.List;
 
 @Configuration
 public class OpenApiConfig {
+
+    private static final Logger logger = LoggerFactory.getLogger(OpenApiConfig.class);
 
     @Value("${server.port:8080}")
     private int serverPort;
@@ -40,7 +44,7 @@ public class OpenApiConfig {
                 .url(codespaceUrl)
                 .description("GitHub Codespaces Server"));
             
-            System.out.println("✅ Swagger configurado para Codespaces: " + codespaceUrl);
+            logger.info("✅ Swagger configurado para Codespaces: {}", codespaceUrl);
         } else {
             // URL local por defecto
             String localUrl = "http://localhost:" + serverPort;
@@ -48,7 +52,7 @@ public class OpenApiConfig {
                 .url(localUrl)
                 .description("Local Development Server"));
             
-            System.out.println("✅ Swagger configurado para desarrollo local: " + localUrl);
+            logger.info("✅ Swagger configurado para desarrollo local: {}", localUrl);
         }
         
         openAPI.servers(servers);
