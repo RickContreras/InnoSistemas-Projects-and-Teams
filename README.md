@@ -2,6 +2,24 @@
 
 API REST para gestión de proyectos académicos, equipos y estudiantes. Sistema diseñado para facilitar la administración de proyectos en cursos universitarios.
 
+## 🚀 Inicio Rápido en Codespaces
+
+Si estás usando GitHub Codespaces, simplemente ejecuta:
+
+```bash
+./start-app.sh
+```
+
+Este script:
+- ✅ Detecta automáticamente la URL de Codespaces
+- 🔨 Compila el proyecto
+- 🚀 Inicia la aplicación
+- 📚 Muestra la URL de Swagger UI
+
+Una vez iniciada la aplicación, accede a:
+- **Swagger UI:** `https://{tu-codespace}-8080.{dominio}/swagger-ui.html`
+- **API Docs:** `https://{tu-codespace}-8080.{dominio}/api-docs`
+
 ## 🚀 Características
 
 - Gestión completa de proyectos académicos

@@ -16,8 +16,8 @@
                 "ms-azuretools.azure-dev",
                 "vscjava.vscode-java-pack",
                 "vscjava.vscode-spring-initializr",
-                "mtxr.sqltools-driver-pg",
                 "mtxr.sqltools",
+                "mtxr.sqltools-driver-pg",
                 "github.copilot",
                 "github.copilot-chat"
             ],
@@ -47,6 +47,17 @@
         8080,
         5432
     ],
+    "portsAttributes": {
+        "8080": {
+            "label": "InnoSistemas API",
+            "onAutoForward": "notify",
+            "protocol": "http"
+        },
+        "5432": {
+            "label": "PostgreSQL Database",
+            "onAutoForward": "silent"
+        }
+    },
     "remoteUser": "developer",
     "mounts": [
         "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
