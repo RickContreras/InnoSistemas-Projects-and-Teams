@@ -34,7 +34,7 @@
                         "password": "root1"
                     }
                 ],
-                "java.jdt.ls.java.home": "/usr/local/openjdk-17",
+                "java.jdt.ls.java.home": "/opt/java/openjdk",
                 "java.configuration.updateBuildConfiguration": "automatic",
                 "java.format.settings.url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
                 "java.format.settings.profile": "GoogleStyle",
