@@ -3,8 +3,6 @@ package com.innosistemas.InnoSistemas.service;
 import com.innosistemas.InnoSistemas.domain.Project;
 import com.innosistemas.InnoSistemas.repository.ProjectRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -21,19 +19,9 @@ public class ProjectService {
         return projectRepository.save(project);
     }
 
-    // Buscar todos los proyectos paginados
+    // Buscar todos los proyectos
     public List<Project> getAll() {
         return projectRepository.findAll();
-    }
-
-    // Buscar proyectos por curso
-    public Page<Project> getByCourseId(Integer courseId, Pageable pageable) {
-        return projectRepository.findByCourseId(courseId, pageable);
-    }
-
-    // Buscar proyectos por estado
-    public List<Project> getByStatusId(Integer statusId) {
-        return projectRepository.findByStatusId(statusId);
     }
 
     // Buscar un proyecto por ID
