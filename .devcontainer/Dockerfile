@@ -11,6 +11,11 @@ RUN apt-get -y update && export DEBIAN_FRONTEND=noninteractive \
     gnupg \
     && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
+# Instalar Git LFS
+RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash \
+    && apt-get install -y git-lfs \
+    && apt-get clean -y && rm -rf /var/lib/apt/lists/*
+
 # Configurar el repositorio de Docker
 #RUN mkdir -p /etc/apt/keyrings \
 #   && curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg \
