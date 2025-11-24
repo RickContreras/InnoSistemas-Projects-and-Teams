@@ -1,4 +1,4 @@
-FROM openjdk:17-jdk-slim
+FROM eclipse-temurin:17-jdk-jammy
 
 # Instalar dependencias necesarias (sin instalar Docker aquí; usar la feature docker-in-docker)
 RUN apt-get -y update && export DEBIAN_FRONTEND=noninteractive \
