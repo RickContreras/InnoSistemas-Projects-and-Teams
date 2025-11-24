@@ -36,9 +36,12 @@ public class OpenApiConfig {
     }
 
     private Optional<Server> getCodespaceServer() {
-        return Optional.ofNullable(System.getenv("CODESPACE_NAME"))
-            .flatMap(name -> Optional.ofNullable(System.getenv("GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN"))
-                .map(domain -> buildCodespaceServer(name, domain)));
+        String name = System.getenv("CODESPACE_NAME");
+        String domain = System.getenv("GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN");
+        
+        return (name != null && domain != null) 
+            ? Optional.of(buildCodespaceServer(name, domain))
+            : Optional.empty();
     }
 
     private Server buildCodespaceServer(String name, String domain) {

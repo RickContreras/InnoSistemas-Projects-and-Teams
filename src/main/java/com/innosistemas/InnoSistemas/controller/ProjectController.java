@@ -34,12 +34,11 @@ public class ProjectController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
-        return projectService.getById(id)
-            .map(p -> {
-                projectService.delete(id);
-                return ResponseEntity.noContent().<Void>build();
-            })
-            .orElse(ResponseEntity.notFound().build());
+        if (projectService.getById(id).isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        projectService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/student/{studentId}")

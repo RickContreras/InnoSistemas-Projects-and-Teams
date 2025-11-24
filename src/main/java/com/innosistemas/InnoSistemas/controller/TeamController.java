@@ -34,12 +34,11 @@ public class TeamController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
-        return teamService.getById(id)
-            .map(t -> {
-                teamService.delete(id);
-                return ResponseEntity.noContent().<Void>build();
-            })
-            .orElse(ResponseEntity.notFound().build());
+        if (teamService.getById(id).isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        teamService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/project/{projectId}")
