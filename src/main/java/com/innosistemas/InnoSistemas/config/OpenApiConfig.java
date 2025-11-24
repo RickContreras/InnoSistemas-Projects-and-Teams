@@ -36,20 +36,15 @@ public class OpenApiConfig {
     }
 
     private Optional<Server> getCodespaceServer() {
-        String codespaceName = System.getenv("CODESPACE_NAME");
-        String portForwardingDomain = System.getenv("GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN");
-        
-        if (codespaceName != null && portForwardingDomain != null) {
-            String codespaceUrl = String.format("https://%s-%d.%s", 
-                codespaceName, serverPort, portForwardingDomain);
-            
-            log.info("✅ Swagger configurado para Codespaces: {}", codespaceUrl);
-            
-            return Optional.of(new Server()
-                .url(codespaceUrl)
-                .description("GitHub Codespaces Server"));
-        }
-        return Optional.empty();
+        return Optional.ofNullable(System.getenv("CODESPACE_NAME"))
+            .flatMap(name -> Optional.ofNullable(System.getenv("GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN"))
+                .map(domain -> buildCodespaceServer(name, domain)));
+    }
+
+    private Server buildCodespaceServer(String name, String domain) {
+        String url = String.format("https://%s-%d.%s", name, serverPort, domain);
+        log.info("✅ Swagger configurado para Codespaces: {}", url);
+        return new Server().url(url).description("GitHub Codespaces Server");
     }
 
     private Server getLocalServer() {

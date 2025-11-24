@@ -2,11 +2,11 @@ package com.innosistemas.InnoSistemas.controller;
 
 import com.innosistemas.InnoSistemas.domain.Team;
 import com.innosistemas.InnoSistemas.service.TeamService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/teams")
@@ -26,13 +26,20 @@ public class TeamController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Team> getById(@PathVariable Integer id) {
-        return teamService.getById(id);
+    public ResponseEntity<Team> getById(@PathVariable Integer id) {
+        return teamService.getById(id)
+            .map(ResponseEntity::ok)
+            .orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer id) {
-        teamService.delete(id);
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+        return teamService.getById(id)
+            .map(t -> {
+                teamService.delete(id);
+                return ResponseEntity.noContent().<Void>build();
+            })
+            .orElse(ResponseEntity.notFound().build());
     }
 
     @GetMapping("/project/{projectId}")

@@ -6,29 +6,25 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+import java.util.List;
+
 @Configuration
 public class CorsConfig {
 
     @Bean
     public CorsFilter corsFilter() {
+        CorsConfiguration config = createCorsConfiguration();
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        CorsConfiguration config = new CorsConfiguration();
-
-        // Permitir credenciales
-        config.setAllowCredentials(true);
-
-        // Permitir todos los orígenes
-        config.addAllowedOriginPattern("*");
-
-        // Permitir todos los headers
-        config.addAllowedHeader("*");
-
-        // Permitir todos los métodos HTTP
-        config.addAllowedMethod("*");
-
-        // Aplicar la configuración a todos los endpoints
         source.registerCorsConfiguration("/**", config);
-
         return new CorsFilter(source);
+    }
+
+    private CorsConfiguration createCorsConfiguration() {
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowCredentials(true);
+        config.addAllowedOriginPattern("*");
+        config.setAllowedHeaders(List.of("*"));
+        config.setAllowedMethods(List.of("*"));
+        return config;
     }
 }

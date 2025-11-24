@@ -2,11 +2,11 @@ package com.innosistemas.InnoSistemas.controller;
 
 import com.innosistemas.InnoSistemas.domain.Project;
 import com.innosistemas.InnoSistemas.service.ProjectService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/projects")
@@ -21,8 +21,10 @@ public class ProjectController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Project> getById(@PathVariable Integer id) {
-        return projectService.getById(id);
+    public ResponseEntity<Project> getById(@PathVariable Integer id) {
+        return projectService.getById(id)
+            .map(ResponseEntity::ok)
+            .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
@@ -31,8 +33,13 @@ public class ProjectController {
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer id) {
-        projectService.delete(id);
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+        return projectService.getById(id)
+            .map(p -> {
+                projectService.delete(id);
+                return ResponseEntity.noContent().<Void>build();
+            })
+            .orElse(ResponseEntity.notFound().build());
     }
 
     @GetMapping("/student/{studentId}")
