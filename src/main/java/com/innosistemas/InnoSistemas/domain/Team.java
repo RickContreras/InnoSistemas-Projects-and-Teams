@@ -1,9 +1,17 @@
 package com.innosistemas.InnoSistemas.domain;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 
 @Entity
 @Table(name = "teams")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Team {
     
     @Id
@@ -15,29 +23,4 @@ public class Team {
 
     @Column(name = "project_id", nullable = false)
     private Integer projectId;
-
-    // Getters y Setters
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getProjectId() {
-        return projectId;
-    }
-
-    public void setProjectId(Integer projectId) {
-        this.projectId = projectId;
-    }
 }

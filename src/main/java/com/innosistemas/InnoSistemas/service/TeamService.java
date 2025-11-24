@@ -3,18 +3,16 @@ package com.innosistemas.InnoSistemas.service;
 import com.innosistemas.InnoSistemas.domain.Team;
 import com.innosistemas.InnoSistemas.repository.TeamRepository;
 import org.springframework.stereotype.Service;
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class TeamService {
 
     private final TeamRepository teamRepository;
-
-    public TeamService(TeamRepository teamRepository) {
-        this.teamRepository = teamRepository;
-    }
 
     public Team save(Team team) {
         return teamRepository.save(team);
