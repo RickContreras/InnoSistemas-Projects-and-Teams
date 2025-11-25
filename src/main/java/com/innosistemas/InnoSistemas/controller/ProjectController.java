@@ -43,9 +43,4 @@ public class ProjectController {
     public List<Project> getProjectsByStudent(@PathVariable Long studentId) {
         return projectService.getProjectsByStudentId(studentId);
     }
-
-    @GetMapping("/student/{studentId}/count")
-    public Long countProjectsByStudent(@PathVariable Long studentId) {
-        return projectService.countProjectsByStudentId(studentId);
-    }
 }

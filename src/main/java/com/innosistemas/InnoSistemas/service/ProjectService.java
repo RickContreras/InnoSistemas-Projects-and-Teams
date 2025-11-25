@@ -38,9 +38,4 @@ public class ProjectService {
     public List<Project> getProjectsByStudentId(Long studentId) {
         return projectRepository.findProjectsByStudentId(studentId);
     }
-
-    // Contar proyectos de un estudiante
-    public Long countProjectsByStudentId(Long studentId) {
-        return projectRepository.countProjectsByStudentId(studentId);
-    }
 }
