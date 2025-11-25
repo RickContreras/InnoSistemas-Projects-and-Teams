@@ -1,4 +1,4 @@
-package com.innosistemas.InnoSistemas.domain;
+package com.innosistemas.projects.domain;
 
 import jakarta.persistence.*;
 import lombok.Data;

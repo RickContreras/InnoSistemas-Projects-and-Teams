@@ -1,10 +1,10 @@
-package com.innosistemas.InnoSistemas;
+package com.innosistemas.projects;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DemoApplicationTests {
+class ProjectsApplicationTests {
 
 	@Test
 	void contextLoads() {

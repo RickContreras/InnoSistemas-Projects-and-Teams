@@ -1,12 +1,12 @@
-package com.innosistemas.InnoSistemas;
+package com.innosistemas.projects;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class InnoSistemasApplication {
+public class ProjectsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(InnoSistemasApplication.class, args);
+		SpringApplication.run(ProjectsApplication.class, args);
 	}
 }

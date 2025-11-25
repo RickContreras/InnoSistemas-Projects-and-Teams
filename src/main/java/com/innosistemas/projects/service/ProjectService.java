@@ -1,7 +1,7 @@
-package com.innosistemas.InnoSistemas.service;
+package com.innosistemas.projects.service;
 
-import com.innosistemas.InnoSistemas.domain.Project;
-import com.innosistemas.InnoSistemas.repository.ProjectRepository;
+import com.innosistemas.projects.domain.Project;
+import com.innosistemas.projects.repository.ProjectRepository;
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 

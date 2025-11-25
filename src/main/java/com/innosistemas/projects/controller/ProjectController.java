@@ -1,7 +1,7 @@
-package com.innosistemas.InnoSistemas.controller;
+package com.innosistemas.projects.controller;
 
-import com.innosistemas.InnoSistemas.domain.Project;
-import com.innosistemas.InnoSistemas.service.ProjectService;
+import com.innosistemas.projects.domain.Project;
+import com.innosistemas.projects.service.ProjectService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import lombok.RequiredArgsConstructor;

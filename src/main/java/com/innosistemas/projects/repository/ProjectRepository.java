@@ -1,6 +1,6 @@
-package com.innosistemas.InnoSistemas.repository;
+package com.innosistemas.projects.repository;
 
-import com.innosistemas.InnoSistemas.domain.Project;
+import com.innosistemas.projects.domain.Project;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

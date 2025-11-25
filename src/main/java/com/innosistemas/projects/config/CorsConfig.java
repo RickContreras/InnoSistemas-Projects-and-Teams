@@ -1,4 +1,4 @@
-package com.innosistemas.InnoSistemas.config;
+package com.innosistemas.projects.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
