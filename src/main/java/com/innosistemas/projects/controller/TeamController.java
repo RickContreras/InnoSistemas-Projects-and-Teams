@@ -39,11 +39,6 @@ public class TeamController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/project/{projectId}")
-    public List<Team> getTeamsByProject(@PathVariable Integer projectId) {
-        return teamService.getTeamsByProjectId(projectId);
-    }
-
     @GetMapping("/student/{studentId}")
     public List<Team> getTeamsByStudent(@PathVariable Long studentId) {
         return teamService.getTeamsByStudentId(studentId);

@@ -30,10 +30,6 @@ public class TeamService {
         teamRepository.deleteById(id);
     }
 
-    public List<Team> getTeamsByProjectId(Integer projectId) {
-        return teamRepository.findByProjectId(projectId);
-    }
-
     public List<Team> getTeamsByStudentId(Long studentId) {
         return teamRepository.findTeamsByStudentId(studentId);
     }

@@ -11,8 +11,6 @@ import java.util.List;
 @Repository
 public interface TeamRepository extends JpaRepository<Team, Integer> {
     
-    List<Team> findByProjectId(Integer projectId);
-    
     @Query(value = "SELECT DISTINCT t.* FROM teams t " +
                    "JOIN team_members tm ON tm.team_id = t.id " +
                    "WHERE tm.student_id = :studentId", 
