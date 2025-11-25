@@ -27,9 +27,7 @@ public class TeamController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Team> getById(@PathVariable Integer id) {
-        return teamService.getById(id)
-            .map(ResponseEntity::ok)
-            .orElse(ResponseEntity.notFound().build());
+        return ResponseEntity.of(teamService.getById(id));
     }
 
     @DeleteMapping("/{id}")

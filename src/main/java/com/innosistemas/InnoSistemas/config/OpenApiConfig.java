@@ -19,27 +19,21 @@ public class OpenApiConfig {
 
     @Bean
     public OpenAPI customOpenAPI() {
-        OpenAPI openAPI = new OpenAPI()
-                .info(new Info()
-                        .title("InnoSistemas API")
-                        .version("1.0")
-                        .description("API REST para gestión de proyectos y equipos"));
-
         String name = System.getenv("CODESPACE_NAME");
         String domain = System.getenv("GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN");
         
-        Server server;
-        if (name != null && domain != null) {
-            String url = String.format("https://%s-%d.%s", name, serverPort, domain);
-            server = new Server().url(url).description("GitHub Codespaces Server");
-            log.info("✅ Swagger configurado para Codespaces: {}", url);
-        } else {
-            String url = "http://localhost:" + serverPort;
-            server = new Server().url(url).description("Local Development Server");
-            log.info("✅ Swagger configurado para desarrollo local: {}", url);
-        }
+        String url = (name != null && domain != null)
+            ? String.format("https://%s-%d.%s", name, serverPort, domain)
+            : "http://localhost:" + serverPort;
         
-        openAPI.servers(List.of(server));
-        return openAPI;
+        String description = (name != null) ? "GitHub Codespaces Server" : "Local Development Server";
+        log.info("✅ Swagger configurado: {}", url);
+        
+        return new OpenAPI()
+            .info(new Info()
+                .title("InnoSistemas API")
+                .version("1.0")
+                .description("API REST para gestión de proyectos y equipos"))
+            .servers(List.of(new Server().url(url).description(description)));
     }
 }

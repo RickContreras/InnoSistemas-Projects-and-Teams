@@ -22,9 +22,7 @@ public class ProjectController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Project> getById(@PathVariable Integer id) {
-        return projectService.getById(id)
-            .map(ResponseEntity::ok)
-            .orElse(ResponseEntity.notFound().build());
+        return ResponseEntity.of(projectService.getById(id));
     }
 
     @PostMapping
